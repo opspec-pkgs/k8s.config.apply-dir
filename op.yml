@@ -1,0 +1,28 @@
+name: github.com/opspec-pkgs/k8s.config.apply-dir
+description: applies a directory of k8s configs to a cluster
+inputs:
+  kubeConfig:
+    file:
+      description: |
+        config for talking to k8s cluster; typically generated via `kubectl config` subcommands
+        see [k8s docs for more info](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+  configs:
+    dir:
+      description: directory of k8s configs to apply
+  namespace:
+    string:
+      description: namespace to target
+      default: default
+opspec: 0.1.6
+version: 1.0.0
+run:
+  container:
+    image: { ref: 'opspecpkgs/k8s.config.apply-dir:1.0.0' }
+    cmd: [ /cmd.sh ]
+    dirs:
+      /configs: $(configs)
+    files:
+      /cmd.sh:
+      /root/.kube/config: $(kubeConfig)
+    envVars:
+      namespace:
