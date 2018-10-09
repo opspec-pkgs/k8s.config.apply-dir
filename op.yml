@@ -11,13 +11,14 @@ inputs:
       description: directory of k8s configs to apply
   namespace:
     string:
+      constraints: { minLength: 1 }
       description: namespace to target
-      default: default
+      default: ' '
 opspec: 0.1.6
-version: 1.0.0
+version: 1.1.0
 run:
   container:
-    image: { ref: 'opspecpkgs/k8s.config.apply-dir:1.0.0' }
+    image: { ref: 'opspecpkgs/k8s.config.apply-dir:1.1.0' }
     cmd: [ /cmd.sh ]
     dirs:
       /configs: $(configs)

@@ -5,4 +5,9 @@ All notable changes will be documented in this file in accordance with
 
 ## \[Unreleased]
 
+## \[1.1.0] - 2018-10-09
+
+### Changed
+- namespace no longer explicitly set
+
 ## \[1.0.0] - 2018-04-27
